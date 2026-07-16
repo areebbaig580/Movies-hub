@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+@theme{
+  --color-netflix-red: 	#db0000;
+  --color-bg: 	#000000;
+  --color-bg-2: 	#333533;
+}
