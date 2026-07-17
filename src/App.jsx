@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import Nav from './components/home/Nav'
-import Hero from './components/home/Hero'
-import TopRated from './components/home/TopRated';
-import Popular from './components/home/Popular';
-import SearchBar from './components/home/SearchBar';
-
+import React, { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home';
+import Categories from './pages/Categories';
+import Wishlist from './pages/Wishlist';
+import Show from './pages/Show';
+import Nav from './components/home/nav';
 
 const App = () => {
+  const [showId, setShowId] = useState('');
+
   return (
-    <div className='min-h-[100vh] w-full bg-black text-white px-4 pb-5 overflow-hidden'>
+    <div className='min-h-[100vh] w-full bg-black text-white pb-5 overflow-hidden'>
       <Nav />
-      <SearchBar/>
-      <Hero />
-      <Popular/>
-      <TopRated/>
+      <Routes>
+        <Route path='/' element={<Home setShowId={setShowId} />} />
+        <Route path='/categories' element={<Categories />} />
+        <Route path='/wishlist' element={<Wishlist />} />
+        <Route path='/Show' element={<Show showId={showId} />} />
+
+      </Routes>
     </div>
   )
 }
