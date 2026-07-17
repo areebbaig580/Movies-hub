@@ -34,7 +34,7 @@ const Hero = () => {
 
             let poster = [{ poster: `${posterUrl}${posterPath}`, genre: genreNAme, title: data.results[0].title, release: data.results[0].release_date, overview: data.results[0].overview }];
 
-            for (let i = 1; i < 4; i++) {
+            for (let i = 1; i < 3; i++) {
                 let imgGenreName = [];
                 let card = {};
                 let imgPath = data.results[i].poster_path;
@@ -64,22 +64,22 @@ const Hero = () => {
     }
     else {
         return (
-            <div className='flex h-fit w-full gap-2 items-center'>
+            <div className='flex h-fit w-full gap-2 items-center flex-col md:flex-row'>
 
                 <div className='h-fit w-fit relative rounded-lg overflow-hidden'>
 
-                    <img src={poster[0].poster} alt="" className='h-[90vh] w-fit object-contain' />
-                    <div className='absolute bottom-0 left-0 pb-10 pl-8'>
-                        <div className='text-5xl font-semibold mb-4'>{poster[0].title}</div>
+                    <img src={poster[0].poster} alt="" className='h-fit w-full object-contain md:h-[90vh] md:w-fit' />
+                    <div className='absolute bottom-0 left-0  pb-5 pl-6 md:pb-10 md:pl-8'>
+                        <div className='text-lg font-semibold mb-2 md:mb-4 md:text-4xl'>{poster[0].title}</div>
                         <div className='flex gap-2 mb-2'>
                             {poster[0].genre.map((g, index) => (
-                                <span key={index} className='px-2 py-1 bg-white/10 rounded-full text-sm'>
+                                <span key={index} className='px-2 py-1 bg-white/10 rounded-full text-xs md:text-sm'>
                                     {g}
                                 </span>
                             ))}
                         </div>
-                        <div className='w-7/10 mb-3'>{poster[0].overview}</div>
-                        <div className='text-white/65'>{poster[0].release}</div>
+                        <div className='w-7/10 mb-3 hidden md:block md:text-lg'>{poster[0].overview}</div>
+                        <div className='text-white/65 text-xs md:text-md'>{poster[0].release}</div>
                     </div>
                     <div className='absolute bottom-0 right-0 pb-10 pr-6'>
                         <div className='px-2 py-1 text-amber-300 cursor-pointer'>Show more</div>
@@ -87,39 +87,39 @@ const Hero = () => {
 
                 </div>
 
-                <div className='w-3/10 flex flex-col gap-2'>
-                    <div className='h-[42vh] w-full flex'>
-                        <img src={movies[0].img} alt="" className='h-full w-fit object-contain rounded-lg' />
-                        <div className='h-full w-full  px-2 py-2 relative'>
-                            <div className='text-2xl font-semibold mb-2'>{movies[0].title}</div>
-                            <div className='flex h-fit flex-wrap gap-2 mb-5'>
+                <div className='w-full flex gap-2 flex-col md:w-3/10'>
+                    <div className='h-fit md:h-[42vh] w-full flex  items-center'>
+                        <img src={movies[0].img} alt="" className=' w-fit object-contain rounded-lg h-[20vh] md:h-full' />
+                        <div className='h-fit w-full  px-2 py-2 md:h-full'>
+                            <div className='text-md md:text-xl font-semibold mb-2'>{movies[0].title}</div>
+                            <div className='flex h-fit flex-wrap gap-2 mb-1'>
                                 {movies[0].genre.map((g, index) => (
-                                    <span key={index} className=' text-white/65 rounded-full text-sm'>
+                                    <span key={index} className=' text-white/65 rounded-full text-xs md:text-sm'>
                                         {g}
                                     </span>
                                 ))}
 
                             </div>
-                            <div className='text-sm'>{movies[0].overview}</div>
-                            <div className='absolute bottom-0 pl-0.5 pb-4'>
+                            <div className='text-xs'>{movies[0].overview}</div>
+                            <div className='mt-2 '>
                                 <div className=' text-amber-300 text-sm cursor-pointer'>Show more</div>
                             </div>
                         </div>
                     </div>
-                    <div className='h-[42vh] w-full flex'>
-                        <img src={movies[1].img} alt="" className='h-full w-fit object-contain rounded-lg' />
-                        <div className='h-full w-full  px-2 py-2 relative'>
-                            <div className='text-2xl font-semibold mb-2'>{movies[1].title}</div>
-                            <div className='flex h-fit flex-wrap gap-2 mb-5'>
+                    <div className='h-fit md:h-[42vh] w-full flex items-center'>
+                        <img src={movies[1].img} alt="" className=' w-fit object-contain rounded-lg h-[20vh] md:h-full' />
+                        <div className='h-fit w-full  px-2 py-2  md:h-full'>
+                            <div className='text-md md:text-xl font-semibold mb-2'>{movies[1].title}</div>
+                            <div className='flex h-fit flex-wrap gap-2 mb-1'>
                                 {movies[1].genre.map((g, index) => (
-                                    <span key={index} className=' text-white/65 rounded-full text-sm'>
+                                    <span key={index} className=' text-white/65 rounded-full text-xs md:text-sm'>
                                         {g}
                                     </span>
                                 ))}
 
                             </div>
-                            <div className='text-sm'>{movies[1].overview}</div>
-                            <div className='absolute bottom-0 pl-0.5 pb-4'>
+                            <div className='text-xs'>{movies[1].overview}</div>
+                            <div className='mt-2 '>
                                 <div className=' text-amber-300 text-sm cursor-pointer'>Show more</div>
                             </div>
                         </div>

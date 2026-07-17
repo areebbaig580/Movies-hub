@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Star } from 'lucide-react'
 
-const TopRated = () => {
+const Popular = () => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const imgUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -9,7 +9,7 @@ const TopRated = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`;
+            const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
 
             const response = await fetch(URL);
             const data = await response.json();
@@ -21,7 +21,7 @@ const TopRated = () => {
                 let title = data.results[i].title;
                 let poster = `${imgUrl}${res}`;
                 let rating = data.results[i].vote_average.toFixed(1);
-                card = { name: title, poster: poster , star: rating};
+                card = { name: title, poster: poster , star: rating}
                 topthree.push(card);
 
             }
@@ -29,11 +29,10 @@ const TopRated = () => {
         };
         fetchData();
     }, [])
-
+    console.log(movies);
     return (
         <>
-
-            <div className='h-fit py-4 font-semibold text-md md:text-lg  '>Top rated</div>
+            <div className='h-fit py-4 font-semibold text-md md:text-lg '>Popular Movies</div>
             <div className='h-fit w-full flex gap-5 overflow-x-auto overflow-y-hidden movie-row'>
                 {movies.map((poster, index) =>
                     <div key={index} className='w-[128px] shrink-0 mb-2 md:w-[200px]'>
@@ -51,4 +50,4 @@ const TopRated = () => {
     )
 }
 
-export default TopRated
+export default Popular
