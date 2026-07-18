@@ -20,14 +20,14 @@ const Show = ({ showId }) => {
             const CastData = await CastFetch.json();
             const providers = await fetch(watchProviders);
             const providersData = await providers.json();
-            
+
             //Movie info collection
 
             let genreNAme = [];
             let cast = [];
             let prName = [];
             let prLogo = [];
-            
+
             let genres = data.genres;
             genres.forEach(element => {
                 genreNAme.push(element.name)
@@ -37,28 +37,28 @@ const Show = ({ showId }) => {
                 let name = CastData.cast[i].name;
                 cast.push(name)
             }
-            
+
             let backdrop = `${posterUrl}${data.backdrop_path}`
             let poster = `${posterUrl}${data.poster_path}`;
-            
+
             let posterData = [{
                 back: poster, name: data.title, release: data.release_date, rating: data.vote_average, lang: data.spoken_languages,
                 synop: data.overview, genre: genreNAme, time: data.runtime, tagline: data.tagline, castName: cast, posterImg: backdrop
             }];
-            
+
             //cast info collection
             let castI = [];
-            
+
             for (let i = 0; i < 10; i++) {
                 let info = {};
                 let name = CastData.cast[i].name;
                 let character = CastData.cast[i].character;
                 let profile = `${posterUrl}${CastData.cast[i].profile_path}`
-                
+
                 info = { name: name, char: character, profile: profile };
                 castI.push(info);
             }
-            
+
             SetMovieData(posterData);
             setLoading(false);
             setCastInfo(castI);
@@ -70,7 +70,7 @@ const Show = ({ showId }) => {
     else
         return (
             <div className='px-2 flex flex-col gap-2'>
-                <div className='h-fit w-full flex mt-3 pb-5 bg-[#0c0c0c] rounded-lg overflow-hidden pt-4'>
+                <div className='h-fit w-full flex pb-5 bg-[#0c0c0c] rounded-lg overflow-hidden pt-4'>
 
                     <img src={movieData[0].back} alt="" className='h-[50vh] object-contain hidden md:block' />
                     <div className='flex flex-col gap-2 h-full w-full md:w-[80vw]  px-4'>
@@ -127,7 +127,7 @@ const Show = ({ showId }) => {
                             <div className='w-[160px] shrink-0 mb-2 md:w-[200px]' key={index}>
 
                                 <img src={c.profile} alt={c.name} className='h-[26vh] md:h-[42vh] w-full object-contain rounded-lg' />
-                                <div className='w-full bg-[#191919] py-2 px-2'>
+                                <div className='w-full bg-[#191919] py-2 px-2 rounded-lg'>
                                     <div>{c.name}</div>
                                     <div className='text-white/60'>{c.char}</div>
                                 </div>
