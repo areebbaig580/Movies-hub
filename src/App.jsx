@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Categories from './pages/Categories';
 import Wishlist from './pages/Wishlist';
 import Show from './pages/Show';
-import Nav from './components/home/nav';
+import Nav from './components/home/Nav';
 
 const App = () => {
 
