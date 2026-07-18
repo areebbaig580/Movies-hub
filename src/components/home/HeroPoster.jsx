@@ -1,7 +1,7 @@
-import { Link } from 'lucide-react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const HeroPoster = ({ poster }) => {
+const HeroPoster = ({ poster, setShowId }) => {
     return (
         <div className='h-fit w-fit relative rounded-lg overflow-hidden'>
 
@@ -18,10 +18,13 @@ const HeroPoster = ({ poster }) => {
                 <div className='w-7/10 mb-3 hidden md:block md:text-lg'>{poster[0].overview}</div>
                 <div className='text-white/65 text-xs md:text-md'>{poster[0].release}</div>
             </div>
-            <div className='absolute bottom-0 right-0 pb-10 pr-6'>
+            <div className='absolute bottom-0 right-0 pb-6 md:pb-10 pr-6'>
                 <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
                     to={'/Show'}
-                    onClick={() => { setShowId(poster[0].id) }}
+                    onClick={() => {
+                        setShowId(poster[0].id)
+                        localStorage.setItem('id', JSON.stringify(poster[0].id));
+                    }}
                 >Show more</Link>
             </div>
         </div>

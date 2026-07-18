@@ -7,7 +7,9 @@ import Show from './pages/Show';
 import Nav from './components/home/nav';
 
 const App = () => {
-  const [showId, setShowId] = useState('');
+
+  let id = JSON.parse(localStorage.getItem('id')) || '';
+  const [showId, setShowId] = useState(id);
 
   return (
     <div className='min-h-[100vh] w-full bg-black text-white pb-5 overflow-hidden'>

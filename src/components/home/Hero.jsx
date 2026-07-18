@@ -21,7 +21,7 @@ const Hero = ({ setShowId }) => {
             const response = await fetch(URL);
             const responseGenre = await fetch(genre);
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             const genreData = await responseGenre.json();
             let movieData = [];
             let genreNAme = [];
@@ -35,7 +35,7 @@ const Hero = ({ setShowId }) => {
                 genreNAme.push(element.name)
             });
 
-            let posterData = [{ poster: `${posterUrl}${posterPath}`, genre: genreNAme, title: data.results[0].title, release: data.results[0].release_date, overview: data.results[0].overview, id: data.results[0].id }];
+            let posterData = [{ poster: `${posterUrl}${posterPath}`, genre: genreNAme, title: data.results[0].title, release: data.results[0].release_date, overview: data.results[0].overview, id: Number(data.results[0].id) }];
 
             for (let i = 1; i < 3; i++) {
                 let imgGenreName = [];
@@ -62,7 +62,6 @@ const Hero = ({ setShowId }) => {
         };
         fetchData();
     }, [])
-    console.log(movies);
 
     if (loading) {
         return <div>Loading...</div>
@@ -71,10 +70,10 @@ const Hero = ({ setShowId }) => {
         return (
             <div className='flex h-fit w-full gap-2 items-center flex-col md:flex-row'>
 
-                <HeroPoster poster={poster} />
+                <HeroPoster poster={poster} setShowId={setShowId} />
 
                 <div className='w-full flex gap-2 flex-col md:w-3/10'>
-                    <HeroComponent movies={movies} />
+                    <HeroComponent movies={movies} setShowId={setShowId} />
                 </div>
 
             </div>

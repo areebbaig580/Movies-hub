@@ -15,9 +15,9 @@ const Popular = ({ url, label, setShowId }) => {
             const data = await response.json();
             let details = [];
 
-            console.log(data.results);
+            // console.log(data.results);
 
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < 20; i++) {
                 let title = '';
                 let card = {};
 
@@ -54,7 +54,9 @@ const Popular = ({ url, label, setShowId }) => {
                             <div>{movie.name}</div>
                             <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
                                 to={'/Show'}
-                                onClick={() => { setShowId(movie.id) }}
+                                onClick={() => { setShowId(movie.id);
+                                    localStorage.setItem('id', JSON.stringify(movie.id));
+                                 }}
                             >Show more</Link>
 
                         </div>

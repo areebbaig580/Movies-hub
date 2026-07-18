@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const HeroComponent = ({ movies }) => {
-    console.log(movies)
+const HeroComponent = ({ movies, setShowId }) => {
     return (
 
         movies.map((movie, index) => (
@@ -23,7 +22,9 @@ const HeroComponent = ({ movies }) => {
                     <div className='mt-2 '>
                         <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
                             to={'/Show'}
-                            onClick={() => { setShowId(movie.id) }}
+                            onClick={() => { setShowId(movie.id); 
+                                localStorage.setItem('id', JSON.stringify(movie.id));
+                            }}
                         >Show more</Link>
 
                     </div>
