@@ -42,8 +42,8 @@ const Wishlist = ({ genre, setShowId }) => {
 
                     {movies.map((e, index) => (
 
-                        <div className='w-[100px] mb-2 md:w-[160px] relative group' key={index}>
-                            <div className='absolute top-2 right-3 hidden group-hover:block cursor-pointer'
+                        <div className='w-[100px] mb-2 md:w-[160px] relative group' key={index} tabIndex={0}>
+                            <div className='absolute top-2 right-3 hidden group-focus:block md:group-hover:block cursor-pointer'
                                 onClick={() => {
                                     let bookmarkDet = bookmark.filter((b)=> b!== e.id);
                                     removeBookmark(bookmarkDet);

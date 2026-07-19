@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import Bookmark from '../components/wishlist/Bookmark';
 
-const SearchPage = ({ setShowId }) => {
+const SearchPage = ({ setShowId ,bookmark,setBookmark}) => {
     const [searchParams] = useSearchParams();
     const [movies, setMovies] = useState([]);
     const query = searchParams.get('q');
@@ -40,7 +41,8 @@ const SearchPage = ({ setShowId }) => {
         <div className='h-fit w-full flex flex-wrap py-4 bg-[#131313] md:gap-5 justify-center gap-3 px-1 md:px-2'>
             {movies.map((e, index) => (
 
-                <div className='w-[100px] mb-2 md:w-[160px]' key={index}>
+                <div className='w-[100px] mb-2 md:w-[160px] relative group' key={index} tabIndex={0}>
+                    <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={e.id} />
                     <img src={e.poster} alt="" className='h-[18vh] md:h-[34vh] w-full object-contain rounded-lg' />
                     <div className='bg-[#191919] rounded-b-lg min-h-[12vh] w-full pl-2 py-2'>
                         <div>{e.name}</div>

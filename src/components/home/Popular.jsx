@@ -53,7 +53,7 @@ const Popular = ({ url, label, setShowId, query }) => {
             <div className='h-fit w-full flex gap-5 overflow-x-auto overflow-y-hidden movie-row mb-4'>
                 {movies.map((movie, index) => (
 
-                    <div key={index} className='w-[130px] mb-2 md:w-[160px] shrink-0 mb-2 relative group'>
+                    <div key={index} className='w-[130px] mb-2 md:w-[160px] shrink-0 mb-2 relative group' tabIndex={0}>
 
                         <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={movie.id} />
 

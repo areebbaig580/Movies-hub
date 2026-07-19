@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Bookmark from '../wishlist/Bookmark'
 
-const HeroPoster = ({ poster, setShowId }) => {
+const HeroPoster = ({ poster, setShowId, bookmark, setBookmark }) => {
     return (
-        <div className='h-fit w-fit relative rounded-lg overflow-hidden'>
-
+        <div className='h-fit w-fit relative rounded-lg overflow-hidden relative group' tabIndex={0}>
+            <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={poster[0].id} />
             <img src={poster[0].poster} alt="" className='h-fit w-full object-contain md:h-[90vh] md:w-fit' />
             <div className='absolute bottom-0 left-0  pb-5 pl-6 md:pb-10 md:pl-8'>
                 <div className='text-lg font-semibold mb-2 md:mb-4 md:text-4xl'>{poster[0].title}</div>

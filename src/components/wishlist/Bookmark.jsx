@@ -3,7 +3,7 @@ import React from 'react'
 
 const Bookmark = ({bookmark , setBookmark , id}) => {
     return (
-        <div className='absolute top-2 right-3 hidden group-hover:block cursor-pointer'
+        <div className='absolute top-2 right-3 hidden group-focus:block md:group-hover:block cursor-pointer'
             onClick={() => {
                 const isBookmarked = bookmark.some((b) => b === id);
                 const updated = isBookmarked ? bookmark.filter((b) => b !== id) : [...bookmark, id];
