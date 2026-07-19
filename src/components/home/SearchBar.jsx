@@ -8,6 +8,7 @@ const SearchBar = () => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && query.trim()) {
       navigate(`/SearchPage?q=${encodeURIComponent(query)}`);
+      localStorage.setItem('lastSearch', JSON.stringify(query));
       setQuery('');
     }
   }
