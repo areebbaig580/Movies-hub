@@ -43,7 +43,7 @@ const SearchPage = ({ setShowId ,bookmark,setBookmark}) => {
 
                 <div className='w-[100px] mb-2 md:w-[160px] relative group' key={index} tabIndex={0}>
                     <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={e.id} />
-                    <img src={e.poster} alt="" className='h-[18vh] md:h-[34vh] w-full object-contain rounded-lg' />
+                    <img src={e.poster} alt="" className='h-[22vh] md:h-[34vh] w-full object-contain rounded-lg' />
                     <div className='bg-[#191919] rounded-b-lg min-h-[12vh] w-full pl-2 py-2'>
                         <div>{e.name}</div>
                         <Link className=' text-amber-300 text-sm cursor-pointer mt-2'

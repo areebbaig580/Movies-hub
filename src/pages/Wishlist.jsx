@@ -50,7 +50,7 @@ const Wishlist = ({ genre, setShowId }) => {
                                     localStorage.setItem('bookmark', JSON.stringify(bookmarkDet));
                                 }}
                             ><Heart className='fill-red-500 text-red-500' size={24}/></div>
-                            <img src={e.poster} alt="" className='h-[18vh] md:h-[34vh] w-full object-contain rounded-lg' />
+                            <img src={e.poster} alt="" className='h-[22vh] md:h-[34vh] w-full object-contain rounded-lg' />
                             <div className='bg-[#191919] rounded-b-lg min-h-[12vh] w-full pl-2 py-2'>
                                 <div>{e.name}</div>
                                 <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
