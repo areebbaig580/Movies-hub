@@ -11,10 +11,14 @@ const SearchPage = ({ setShowId }) => {
     useEffect(() => {
         const fetchData = async () => {
             const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`;
+            const genre = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${28}`
+            const genRes = await fetch(genre);
+            const gendata = await genRes.json();
+            // console.log(gendata);
             const response = await fetch(URL);
             const data = await response.json();
             const resultLen = data.results.length;
-            console.log(data);
+            // console.log(data);
             let movieData = [];
             for (let i = 0; i < resultLen; i++) {
                 let card = {};
