@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Bookmark from '../components/wishlist/Bookmark';
 
-const Discover = ({ genre, setShowId ,bookmark, setBookmark }) => {
+const Discover = ({ genre, setShowId, bookmark, setBookmark }) => {
   const API_KEY = "a3cc59d361435c6d960d428362f80a62";
   const posterUrl = 'https://image.tmdb.org/t/p/original';
   const [loading, setLoading] = useState(true);
@@ -45,6 +45,7 @@ const Discover = ({ genre, setShowId ,bookmark, setBookmark }) => {
               onClick={() => {
                 setShowId(e.id);
                 localStorage.setItem('id', JSON.stringify(e.id));
+                localStorage.setItem('lastSearch', JSON.stringify({ id: e.id, name: e.name }));
               }}
             >Show more
             </Link>

@@ -50,10 +50,10 @@ const Popular = ({ url, label, setShowId, query }) => {
     return (
         <>
             <div className='h-fit py-4 font-semibold text-md md:text-lg text-amber-300'>{label}</div>
-            <div className='h-fit w-full flex gap-5 overflow-x-auto overflow-y-hidden movie-row mb-4'>
+            <div className='h-fit w-full flex gap-5 overflow-x-auto overflow-y-hidden movie-row'>
                 {movies.map((movie, index) => (
 
-                    <div key={index} className='w-[130px] mb-2 md:w-[160px] shrink-0 mb-2 relative group' tabIndex={0}>
+                    <div key={index} className='w-[130px] md:w-[160px] shrink-0  relative group' tabIndex={0}>
 
                         <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={movie.id} />
 
@@ -69,6 +69,7 @@ const Popular = ({ url, label, setShowId, query }) => {
                                 onClick={() => {
                                     setShowId(movie.id);
                                     localStorage.setItem('id', JSON.stringify(movie.id));
+                                    localStorage.setItem('lastSearch', JSON.stringify({ id: movie.id, name: movie.name }));
                                 }}
                             >Show more
                             </Link>

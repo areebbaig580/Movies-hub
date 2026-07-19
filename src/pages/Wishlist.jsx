@@ -11,7 +11,7 @@ const Wishlist = ({ genre, setShowId }) => {
         const saved = JSON.parse(localStorage.getItem('bookmark'));
         return saved ? saved : [];
     });
-    
+
     useEffect(() => {
         const fetchData = async () => {
 
@@ -45,11 +45,11 @@ const Wishlist = ({ genre, setShowId }) => {
                         <div className='w-[100px] mb-2 md:w-[160px] relative group' key={index} tabIndex={0}>
                             <div className='absolute top-2 right-3 hidden group-focus:block md:group-hover:block cursor-pointer'
                                 onClick={() => {
-                                    let bookmarkDet = bookmark.filter((b)=> b!== e.id);
+                                    let bookmarkDet = bookmark.filter((b) => b !== e.id);
                                     removeBookmark(bookmarkDet);
                                     localStorage.setItem('bookmark', JSON.stringify(bookmarkDet));
                                 }}
-                            ><Heart className='fill-red-500 text-red-500' size={24}/></div>
+                            ><Heart className='fill-red-500 text-red-500' size={24} /></div>
                             <img src={e.poster} alt="" className='h-[22vh] md:h-[34vh] w-full object-contain rounded-lg' />
                             <div className='bg-[#191919] rounded-b-lg min-h-[12vh] w-full pl-2 py-2'>
                                 <div>{e.name}</div>
@@ -58,6 +58,7 @@ const Wishlist = ({ genre, setShowId }) => {
                                     onClick={() => {
                                         setShowId(e.id);
                                         localStorage.setItem('id', JSON.stringify(e.id));
+                                        localStorage.setItem('lastSearch', JSON.stringify({ id: e.id, name: e.name }));
                                     }}
                                 >Show more
                                 </Link>

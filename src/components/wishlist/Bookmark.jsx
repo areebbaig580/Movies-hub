@@ -1,7 +1,7 @@
 import { Heart } from 'lucide-react';
 import React from 'react'
 
-const Bookmark = ({bookmark , setBookmark , id}) => {
+const Bookmark = ({ bookmark, setBookmark, id }) => {
     return (
         <div className='absolute top-2 right-3 hidden group-focus:block md:group-hover:block cursor-pointer'
             onClick={() => {

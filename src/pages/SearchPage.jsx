@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import Bookmark from '../components/wishlist/Bookmark';
 
-const SearchPage = ({ setShowId ,bookmark,setBookmark}) => {
+const SearchPage = ({ setShowId, bookmark, setBookmark }) => {
     const [searchParams] = useSearchParams();
     const [movies, setMovies] = useState([]);
     const query = searchParams.get('q');
@@ -51,6 +51,7 @@ const SearchPage = ({ setShowId ,bookmark,setBookmark}) => {
                             onClick={() => {
                                 setShowId(e.id);
                                 localStorage.setItem('id', JSON.stringify(e.id));
+                                localStorage.setItem('lastSearch', JSON.stringify({ id: e.id, name: e.name }));
                             }}
                         >Show more
                         </Link>

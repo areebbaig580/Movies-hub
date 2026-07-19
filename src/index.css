@@ -1,25 +1,31 @@
 @import "tailwindcss";
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
 }
 
-@theme{
-  --color-netflix-red: 	#db0000;
-  --color-bg: 	#000000;
-  --color-bg-2: 	#333533;
+@theme {
+  --color-netflix-red: #db0000;
+  --color-bg: #000000;
+  --color-bg-2: #333533;
 }
+
 .movie-row::-webkit-scrollbar {
   height: 4px;
 }
+
 .movie-row::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .movie-row::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(55, 53, 53, 0.3);
   border-radius: 999px;
 }
+
 .movie-row::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(66, 66, 66, 0.5);
 }

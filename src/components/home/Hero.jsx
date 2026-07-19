@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import HeroComponent from './HeroComponent';
 import HeroPoster from './HeroPoster';
 
-const Hero = ({ setShowId , bookmark,setBookmark }) => {
+const Hero = ({ setShowId, bookmark, setBookmark }) => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const posterUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -70,10 +70,10 @@ const Hero = ({ setShowId , bookmark,setBookmark }) => {
         return (
             <div className='flex h-fit w-full gap-2 items-center flex-col md:flex-row'>
 
-                <HeroPoster poster={poster} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark}/>
+                <HeroPoster poster={poster} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />
 
                 <div className='w-full flex gap-2 flex-col md:w-3/10'>
-                    <HeroComponent movies={movies} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark}/>
+                    <HeroComponent movies={movies} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />
                 </div>
 
             </div>

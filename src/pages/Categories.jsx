@@ -36,6 +36,7 @@ const Categories = ({ setGenre, setShowId }) => {
                             onClick={() => {
                                 setGenre(e.id);
                                 localStorage.setItem('genre', JSON.stringify(e.id));
+                                localStorage.setItem('lastGenre', JSON.stringify({ name: e.name, id: e.id }));
                             }}
                             key={index} to={'/Discover'}>{e.name}</Link>
                     ))}

@@ -1,7 +1,8 @@
 import { Clock, Star } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
+import Popular from '../components/home/Popular';
 
-const Show = ({ showId }) => {
+const Show = ({ showId, setShowId }) => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const [movieData, SetMovieData] = useState([]);
     const posterUrl = 'https://image.tmdb.org/t/p/original';
@@ -124,9 +125,9 @@ const Show = ({ showId }) => {
                     <div className='h-fit w-full flex gap-5 overflow-x-auto overflow-y-hidden movie-row my-2'>
                         {castInfo.map((c, index) => (
 
-                            <div className='w-[160px] shrink-0 mb-2 md:w-[200px]' key={index}>
+                            <div className='w-[130px] md:w-[160px] shrink-0' key={index}>
 
-                                <img src={c.profile} alt={c.name} className='h-[26vh] md:h-[42vh] w-full object-contain rounded-lg' />
+                                <img src={c.profile} alt={c.name} className='h-[28vh] md:h-[34vh] w-full object-contain rounded-lg' />
                                 <div className='w-full bg-[#191919] py-2 px-2 rounded-lg'>
                                     <div>{c.name}</div>
                                     <div className='text-white/60'>{c.char}</div>
@@ -139,6 +140,11 @@ const Show = ({ showId }) => {
                     </div>
 
                 </div>
+                <div className='h-fit w-full bg-[#0c0c0c] px-4'>
+
+                    <Popular url={`https://api.themoviedb.org/3/movie/${showId}/recommendations?api_key=`} label={`More like this`} query={''} setShowId={setShowId} />
+                </div>
+
 
             </div>
         )
