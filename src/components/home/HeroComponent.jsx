@@ -7,7 +7,7 @@ const HeroComponent = ({ movies, setShowId, bookmark, setBookmark }) => {
 
         movies.map((movie, index) => (
             <div className='h-fit md:h-[42vh] w-full flex relative group' key={index} tabIndex={0}>
-                <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={movie.id} />
+                <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={movie.id} categ={'movie'}/>
                 <img src={movie.img} alt="" className=' w-fit object-contain rounded-lg h-[20vh] md:h-full' />
                 <div className='h-fit w-full px-2 md:h-full'>
                     <div className='text-md md:text-xl font-semibold mb-2'>{movie.title}</div>

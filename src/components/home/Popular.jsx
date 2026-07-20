@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 import Bookmark from '../wishlist/Bookmark';
 
 
-const Popular = ({ url, label, setShowId, query , categ }) => {
+const Popular = ({ url, label, setShowId, query, categ , bookmark ,setBookmark}) => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const imgUrl = 'https://image.tmdb.org/t/p/original';
 
-    const [bookmark, setBookmark] = useState(() => {
-        const saved = JSON.parse(localStorage.getItem('bookmark'));
-        return saved ? saved : [];
-    });
+   
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -38,9 +35,9 @@ const Popular = ({ url, label, setShowId, query , categ }) => {
                 let rating = data.results[i].vote_average.toFixed(1);
                 let ident = data.results[i].id;
                 let type = data.results[i].media_type || 'movie';
-                
 
-                card = { name: title, poster: poster, star: rating, id: ident , type: type}
+
+                card = { name: title, poster: poster, star: rating, id: ident, type: type }
                 details.push(card);
 
             }
@@ -58,7 +55,7 @@ const Popular = ({ url, label, setShowId, query , categ }) => {
 
                     <div key={index} className='w-[130px] md:w-[160px] shrink-0  relative group' tabIndex={0}>
 
-                        <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={movie.id} />
+                        <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={movie.id} categ={movie.type} />
 
                         <img src={movie.poster} alt={movie.name} className='h-[28vh] md:h-[34vh] w-full object-contain rounded-lg' />
 
@@ -70,9 +67,9 @@ const Popular = ({ url, label, setShowId, query , categ }) => {
                             <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
                                 to={'/Show'}
                                 onClick={() => {
-                                    setShowId({id: movie.id, type: movie.type});
-                                    localStorage.setItem('id', JSON.stringify({id: movie.id, type: movie.type}));
-                                    localStorage.setItem('lastSearch', JSON.stringify({ id: movie.id, name: movie.name , type : movie.type}));
+                                    setShowId({ id: movie.id, type: movie.type });
+                                    localStorage.setItem('id', JSON.stringify({ id: movie.id, type: movie.type }));
+                                    localStorage.setItem('lastSearch', JSON.stringify({ id: movie.id, name: movie.name, type: movie.type }));
                                 }}
                             >Show more
                             </Link>

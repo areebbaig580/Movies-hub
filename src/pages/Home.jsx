@@ -14,21 +14,21 @@ const Home = ({ setShowId, bookmark, setBookmark }) => {
 
             <div className='h-fit w-full bg-[#0c0c0c] px-4 mb-3'>
 
-                <Popular url={'https://api.themoviedb.org/3/movie/popular?api_key='} label={'Popular Movies'} setShowId={setShowId} query={''} />
+                <Popular url={'https://api.themoviedb.org/3/movie/popular?api_key='} label={'Popular Movies'} setShowId={setShowId} query={''} bookmark={bookmark} setBookmark={setBookmark}/>
             </div>
             <div className='h-fit w-full bg-[#0c0c0c] px-4 mb-3'>
 
-                <Popular url={'https://api.themoviedb.org/3/movie/top_rated?api_key='} label={'Top Rated Movies'} setShowId={setShowId} query={''} />
+                <Popular url={'https://api.themoviedb.org/3/movie/top_rated?api_key='} label={'Top Rated Movies'} setShowId={setShowId} query={''} bookmark={bookmark} setBookmark={setBookmark}/>
             </div>
             <div className='h-fit w-full bg-[#0c0c0c] px-4 mb-3'>
-                <Popular url={'https://api.themoviedb.org/3/trending/tv/day?api_key='} label={'Trending Shows'} setShowId={setShowId} query={''} categ={'tv'} />
+                <Popular url={'https://api.themoviedb.org/3/trending/tv/day?api_key='} label={'Trending Shows'} setShowId={setShowId} query={''} categ={'tv'} bookmark={bookmark} setBookmark={setBookmark}/>
             </div>
            
             <div className='h-fit w-full bg-[#0c0c0c] px-4 mb-3'>
 
                 {lastSearch && (
 
-                    <Popular url={`https://api.themoviedb.org/3/${lastSearch.type}/${lastSearch.id}/recommendations?api_key=`} label={`Keep exploring ${lastSearch.name}`} query={''} setShowId={setShowId} categ={lastSearch.type} />
+                    <Popular url={`https://api.themoviedb.org/3/${lastSearch.type}/${lastSearch.id}/recommendations?api_key=`} label={`Keep exploring ${lastSearch.name}`} query={''} setShowId={setShowId} categ={lastSearch.type} bookmark={bookmark} setBookmark={setBookmark}/>
                 )}
             </div>
             

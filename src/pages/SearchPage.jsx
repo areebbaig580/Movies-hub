@@ -42,7 +42,7 @@ const SearchPage = ({ setShowId, bookmark, setBookmark }) => {
             {movies.map((e, index) => (
 
                 <div className='w-[100px] mb-2 md:w-[160px] relative group' key={index} tabIndex={0}>
-                    <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={e.id} />
+                    <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={e.id} categ={'movie'}/>
                     <img src={e.poster} alt="" className='h-[22vh] md:h-[34vh] w-full object-contain rounded-lg' />
                     <div className='bg-[#191919] rounded-b-lg min-h-[12vh] w-full pl-2 py-2'>
                         <div>{e.name}</div>

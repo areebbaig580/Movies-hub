@@ -2,7 +2,7 @@ import { Clock, Star } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import Popular from '../components/home/Popular';
 
-const Show = ({ showId, setShowId }) => {
+const Show = ({ showId, setShowId ,  bookmark ,setBookmark }) => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const [movieData, SetMovieData] = useState([]);
     const posterUrl = 'https://image.tmdb.org/t/p/original';
@@ -172,7 +172,7 @@ const Show = ({ showId, setShowId }) => {
                 </div>
                 <div className='h-fit w-full bg-[#0c0c0c] px-4'>
 
-                    <Popular url={`https://api.themoviedb.org/3/${showId.type}/${showId.id}/recommendations?api_key=`} label={`More like this`} setShowId={setShowId} query={''} categ={showId.type}/>
+                    <Popular url={`https://api.themoviedb.org/3/${showId.type}/${showId.id}/recommendations?api_key=`} label={`More like this`} setShowId={setShowId} query={''} categ={showId.type}  bookmark={bookmark} setBookmark={setBookmark}/>
                 </div>
 
 

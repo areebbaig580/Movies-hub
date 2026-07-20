@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Popular from '../components/home/Popular';
 
-const Categories = ({ setGenre, setShowId }) => {
+const Categories = ({ setGenre, setShowId, bookmark, setBookmark }) => {
     const [genreNames, setGenreNames] = useState([]);
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const posterUrl = 'https://image.tmdb.org/t/p/original';
@@ -41,8 +41,8 @@ const Categories = ({ setGenre, setShowId }) => {
                             key={index} to={'/Discover'}>{e.name}</Link>
                     ))}
                 </div>
-                <Popular url={`https://api.themoviedb.org/3/discover/movie?api_key=`} label={'Top Action'} query={`&with_genres=${28}`} setShowId={setShowId} />
-                <Popular url={`https://api.themoviedb.org/3/discover/movie?api_key=`} label={'Top Horror'} query={`&with_genres=${27}`} setShowId={setShowId} />
+                <Popular url={`https://api.themoviedb.org/3/discover/movie?api_key=`} label={'Top Action'} query={`&with_genres=${28}`} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />
+                <Popular url={`https://api.themoviedb.org/3/discover/movie?api_key=`} label={'Top Horror'} query={`&with_genres=${27}`} setShowId={setShowId} setBookmark={setBookmark} bookmark={bookmark} />
             </div>
         )
 }
