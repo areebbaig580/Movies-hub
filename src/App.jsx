@@ -8,6 +8,7 @@ import Nav from './components/home/Nav';
 import SearchPage from './pages/SearchPage';
 import SearchBar from './components/home/SearchBar';
 import Discover from './pages/Discover';
+import Footer from './components/home/Footer';
 
 const App = () => {
 
@@ -28,13 +29,14 @@ const App = () => {
       <Routes>
 
         <Route path='/' element={<Home setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
-        <Route path='/categories' element={<Categories setGenre={setGenre} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark}/>} />
+        <Route path='/categories' element={<Categories setGenre={setGenre} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
         <Route path='/wishlist' element={<Wishlist setShowId={setShowId} />} />
-        <Route path='/Show' element={<Show showId={showId} setShowId={setShowId}  bookmark={bookmark} setBookmark={setBookmark}/>} />
+        <Route path='/Show' element={<Show showId={showId} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
         <Route path='/SearchPage' element={<SearchPage setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
         <Route path='/Discover' element={<Discover genre={genre} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
 
       </Routes>
+      <Footer/>
     </div>
   )
 }
