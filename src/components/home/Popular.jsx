@@ -20,7 +20,7 @@ const Popular = ({ url, label, setShowId, query , categ }) => {
             const response = await fetch(URL);
             const data = await response.json();
             let details = [];
-            console.log(data);
+            // console.log(data);
 
             let len = data.results.length;
 

@@ -36,7 +36,7 @@ const Show = ({ showId, setShowId }) => {
             const data = await response.json();
             const CastFetch = await fetch(Cast);
             const CastData = await CastFetch.json();
-            console.log(CastData);
+            // console.log(CastData);
             const providers = await fetch(watchProviders);
             const providersData = await providers.json();
 
