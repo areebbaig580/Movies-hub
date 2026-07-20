@@ -23,8 +23,8 @@ const HeroPoster = ({ poster, setShowId, bookmark, setBookmark }) => {
                 <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
                     to={'/Show'}
                     onClick={() => {
-                        setShowId(poster[0].id)
-                        localStorage.setItem('id', JSON.stringify(poster[0].id));
+                        setShowId({id: poster[0].id, type: 'movie'})
+                        localStorage.setItem('id', JSON.stringify({id: poster[0].id, type: 'movie'}));
                     }}
                 >Show more</Link>
             </div>

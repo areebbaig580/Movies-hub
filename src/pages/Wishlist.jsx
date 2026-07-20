@@ -2,7 +2,7 @@ import { Heart } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
-const Wishlist = ({ genre, setShowId }) => {
+const Wishlist = ({ setShowId }) => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const posterUrl = 'https://image.tmdb.org/t/p/original';
     const [loading, setLoading] = useState(true);
@@ -56,9 +56,9 @@ const Wishlist = ({ genre, setShowId }) => {
                                 <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
                                     to={'/Show'}
                                     onClick={() => {
-                                        setShowId(e.id);
-                                        localStorage.setItem('id', JSON.stringify(e.id));
-                                        localStorage.setItem('lastSearch', JSON.stringify({ id: e.id, name: e.name }));
+                                        setShowId({ id: e.id, type: 'movie' });
+                                        localStorage.setItem('id', JSON.stringify({ id: e.id, type: 'movie' }));
+                                        localStorage.setItem('lastSearch', JSON.stringify({ id: e.id, name: e.name, type: 'movie' }));
                                     }}
                                 >Show more
                                 </Link>

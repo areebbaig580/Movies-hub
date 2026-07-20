@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Bookmark from '../wishlist/Bookmark';
 
 
-const Popular = ({ url, label, setShowId, query }) => {
+const Popular = ({ url, label, setShowId, query , categ }) => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const imgUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -20,8 +20,8 @@ const Popular = ({ url, label, setShowId, query }) => {
             const response = await fetch(URL);
             const data = await response.json();
             let details = [];
+            console.log(data);
 
-            // console.log(data.results);
             let len = data.results.length;
 
             for (let i = 0; i < len; i++) {
@@ -29,7 +29,7 @@ const Popular = ({ url, label, setShowId, query }) => {
                 let card = {};
 
                 let res = data.results[i].poster_path;
-                if (label === 'Trending Series') {
+                if (categ === 'tv') {
                     title = data.results[i].name;
                 } else {
                     title = data.results[i].title;
@@ -37,15 +37,18 @@ const Popular = ({ url, label, setShowId, query }) => {
                 let poster = `${imgUrl}${res}`;
                 let rating = data.results[i].vote_average.toFixed(1);
                 let ident = data.results[i].id;
+                let type = data.results[i].media_type || 'movie';
+                
 
-                card = { name: title, poster: poster, star: rating, id: ident }
+                card = { name: title, poster: poster, star: rating, id: ident , type: type}
                 details.push(card);
 
             }
             setMovies(details);
         };
         fetchData();
-    }, [])
+    }, [url])
+    // console.log(movies);
 
     return (
         <>
@@ -67,9 +70,9 @@ const Popular = ({ url, label, setShowId, query }) => {
                             <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
                                 to={'/Show'}
                                 onClick={() => {
-                                    setShowId(movie.id);
-                                    localStorage.setItem('id', JSON.stringify(movie.id));
-                                    localStorage.setItem('lastSearch', JSON.stringify({ id: movie.id, name: movie.name }));
+                                    setShowId({id: movie.id, type: movie.type});
+                                    localStorage.setItem('id', JSON.stringify({id: movie.id, type: movie.type}));
+                                    localStorage.setItem('lastSearch', JSON.stringify({ id: movie.id, name: movie.name , type : movie.type}));
                                 }}
                             >Show more
                             </Link>

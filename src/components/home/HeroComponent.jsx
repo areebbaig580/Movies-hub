@@ -24,8 +24,8 @@ const HeroComponent = ({ movies, setShowId, bookmark, setBookmark }) => {
                         <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
                             to={'/Show'}
                             onClick={() => {
-                                setShowId(movie.id);
-                                localStorage.setItem('id', JSON.stringify(movie.id));
+                                setShowId({id: movie.id, type: 'movie'});
+                                localStorage.setItem('id', JSON.stringify({id: movie.id, type: 'movie'}));
                             }}
                         >Show more</Link>
 

@@ -18,19 +18,20 @@ const Home = ({ setShowId, bookmark, setBookmark }) => {
             </div>
             <div className='h-fit w-full bg-[#0c0c0c] px-4 mb-3'>
 
-                <Popular url={'https://api.themoviedb.org/3/movie/top_rated?api_key='} label={'Top Rated'} setShowId={setShowId} query={''} />
+                <Popular url={'https://api.themoviedb.org/3/movie/top_rated?api_key='} label={'Top Rated Movies'} setShowId={setShowId} query={''} />
             </div>
             <div className='h-fit w-full bg-[#0c0c0c] px-4 mb-3'>
-
-                <Popular url={`https://api.themoviedb.org/3/discover/movie?api_key=`} label={`Top ${lastGenre.name}`} query={`&with_genres=${lastGenre.id}`} setShowId={setShowId} />
+                <Popular url={'https://api.themoviedb.org/3/trending/tv/day?api_key='} label={'Trending Shows'} setShowId={setShowId} query={''} categ={'tv'} />
             </div>
+           
             <div className='h-fit w-full bg-[#0c0c0c] px-4 mb-3'>
 
                 {lastSearch && (
 
-                    <Popular url={`https://api.themoviedb.org/3/movie/${lastSearch.id}/recommendations?api_key=`} label={`Keep exploring ${lastSearch.name}`} query={''} setShowId={setShowId} />
+                    <Popular url={`https://api.themoviedb.org/3/${lastSearch.type}/${lastSearch.id}/recommendations?api_key=`} label={`Keep exploring ${lastSearch.name}`} query={''} setShowId={setShowId} categ={lastSearch.type} />
                 )}
             </div>
+            
 
         </div>
     )
