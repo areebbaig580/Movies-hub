@@ -26,7 +26,7 @@ const App = () => {
   });
 
   return (
-    <div className='min-h-[100vh] w-full bg-black text-white pb-5 overflow-hidden'>
+    <div className='min-h-[100vh] w-full bg-black text-white overflow-hidden'>
       <Nav  SearchType={SearchType} setSearchType={setSearchType} query={query} setQuery={setQuery}/>
       <SearchBar SearchType={SearchType} setSearchType={setSearchType} query={query} setQuery={setQuery}/>
       <Routes>
