@@ -17,6 +17,7 @@ const App = () => {
   let searchType = JSON.parse(localStorage.getItem('searchType'))|| 'movie';
 
   const [showId, setShowId] = useState({ id: id.id, type: id.type });
+  const [query, setQuery] = useState('');
   const [genre, setGenre] = useState(genreId);
   const[SearchType , setSearchType] = useState(searchType);
   const [bookmark, setBookmark] = useState(() => {
@@ -26,8 +27,8 @@ const App = () => {
 
   return (
     <div className='min-h-[100vh] w-full bg-black text-white pb-5 overflow-hidden'>
-      <Nav  SearchType={SearchType} setSearchType={setSearchType}/>
-      <SearchBar SearchType={SearchType} setSearchType={setSearchType}/>
+      <Nav  SearchType={SearchType} setSearchType={setSearchType} query={query} setQuery={setQuery}/>
+      <SearchBar SearchType={SearchType} setSearchType={setSearchType} query={query} setQuery={setQuery}/>
       <Routes>
 
         <Route path='/' element={<Home setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark}  />}/>

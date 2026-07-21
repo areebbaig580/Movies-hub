@@ -17,7 +17,6 @@ const Popular = ({ url, label, setShowId, query, categ , bookmark ,setBookmark})
             const response = await fetch(URL);
             const data = await response.json();
             let details = [];
-            // console.log(data);
 
             let len = data.results.length;
 

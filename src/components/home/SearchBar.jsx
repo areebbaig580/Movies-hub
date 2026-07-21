@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import { Search } from 'lucide-react';
 
-const SearchBar = ({SearchType,setSearchType}) => {
+const SearchBar = ({SearchType,setSearchType ,query,setQuery}) => {
   const navigate = useNavigate();
-  const [query, setQuery] = useState('');
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && query.trim()) {

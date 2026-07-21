@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 
-const Nav = ({ SearchType,setSearchType}) => {
+const Nav = ({ SearchType,setSearchType , query ,setQuery}) => {
     const navigate = useNavigate();
-    const [query, setQuery] = useState('');
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && query.trim()) {

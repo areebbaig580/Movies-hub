@@ -30,13 +30,11 @@ const Show = ({ showId, setShowId ,  bookmark ,setBookmark }) => {
                 season = `https://api.themoviedb.org/3/tv/${showId.id}/season/${1}?api_key=${API_KEY}`;
                 seasonFetch = await fetch(season);
                 seasonData = await seasonFetch.json();
-                // console.log(seasonData);
             }
             const response = await fetch(url);
             const data = await response.json();
             const CastFetch = await fetch(Cast);
             const CastData = await CastFetch.json();
-            // console.log(CastData);
             const providers = await fetch(watchProviders);
             const providersData = await providers.json();
 
