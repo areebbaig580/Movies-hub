@@ -34,8 +34,8 @@ const Categories = ({ setGenre, setShowId, bookmark, setBookmark }) => {
                     {genreNames.genres.map((e, index) => (
                         <Link className='px-4 py-2 bg-[#370617] rounded-2xl cursor-pointer text-sm md:text-lg'
                             onClick={() => {
-                                setGenre(e.id);
-                                localStorage.setItem('genre', JSON.stringify(e.id));
+                                setGenre({ name: e.name, id: e.id });
+                                localStorage.setItem('genre', JSON.stringify({ name: e.name, id: e.id }));
                                 localStorage.setItem('lastGenre', JSON.stringify({ name: e.name, id: e.id }));
                             }}
                             key={index} to={'/Discover'}>{e.name}</Link>

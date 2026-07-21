@@ -3,7 +3,7 @@ import Hero from '../components/home/Hero'
 import Popular from '../components/home/Popular';
 
 const Home = ({ setShowId, bookmark, setBookmark }) => {
-    const lastGenre = JSON.parse(localStorage.getItem('lastGenre')) || { name: 'Action', id: 28 };
+    const lastGenre = JSON.parse(localStorage.getItem('lastGenre'));
     const lastSearch = JSON.parse(localStorage.getItem('lastSearch'));
     return (
         <div className='min-h-[100vh] w-full bg-black text-white px-2 pb-5 overflow-hidden'>
@@ -29,6 +29,13 @@ const Home = ({ setShowId, bookmark, setBookmark }) => {
                 {lastSearch && (
 
                     <Popular url={`https://api.themoviedb.org/3/${lastSearch.type}/${lastSearch.id}/recommendations?api_key=`} label={`Keep exploring ${lastSearch.name}`} query={''} setShowId={setShowId} categ={lastSearch.type} bookmark={bookmark} setBookmark={setBookmark}/>
+                )}
+            </div>
+            <div className='h-fit w-full bg-[#0c0c0c] px-4 mb-3'>
+
+                {lastGenre && (
+
+                    <Popular url={`https://api.themoviedb.org/3/discover/movie?api_key=`} label={`More on ${lastGenre.name}`} query={`&with_genres=${lastGenre.id}`} setShowId={setShowId} categ={'movie'} bookmark={bookmark} setBookmark={setBookmark}/>
                 )}
             </div>
             

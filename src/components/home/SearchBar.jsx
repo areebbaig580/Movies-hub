@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Dropdown from './Dropdown';
+import { Search } from 'lucide-react';
 
-const SearchBar = () => {
+const SearchBar = ({SearchType,setSearchType}) => {
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
 
@@ -12,13 +14,16 @@ const SearchBar = () => {
     }
   }
   return (
-    <div className='mx-2 mt-2'>
-      <input type="text" className='bg-bg-2 rounded-md text-white px-2 py-1 w-full block md:hidden my-2 outline-none' placeholder='Search Movies' value={query}
+    <div className='mx-5 mt-2 block md:hidden flex items-center gap-2'>
+
+      <input type="text" className='bg-bg-2 rounded-md text-white px-2 py-1 w-full my-2 outline-none' placeholder='Search Movie/Tv' value={query}
         onChange={(e) => {
           setQuery(e.target.value);
         }}
         onKeyDown={handleKeyDown}
       />
+
+      <Dropdown SearchType={SearchType} setSearchType={setSearchType}/>
     </div>
   )
 }

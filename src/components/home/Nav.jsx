@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { TvMinimalPlay } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import Dropdown from './Dropdown';
 
-const Nav = () => {
+const Nav = ({ SearchType,setSearchType}) => {
     const navigate = useNavigate();
     const [query, setQuery] = useState('');
 
@@ -22,13 +23,14 @@ const Nav = () => {
                     <Link className='text-sm md:text-md font-semibold ' to={'/categories'} >Categories</Link>
                     <Link className='text-sm md:text-md font-semibold ' to={'/wishlist'} >Wishlist</Link>
                 </div>
-                <div className='gap-2  hidden md:flex'>
+                <div className='gap-2  hidden md:flex items-center'>
                     Search <input type="text" className='bg-white rounded-md text-black px-2 w-7/10' placeholder='Search' value={query}
                         onChange={(e) => {
                             setQuery(e.target.value);
                         }}
                         onKeyDown={handleKeyDown}
                     />
+               <Dropdown SearchType={SearchType} setSearchType={setSearchType} />
                 </div>
 
             </div>

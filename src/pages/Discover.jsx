@@ -14,7 +14,7 @@ const Discover = ({ genre, setShowId, bookmark, setBookmark }) => {
 
       const pages = await Promise.all(
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(page =>
-          fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre}&page=${page}`)
+          fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre.id}&page=${page}`)
             .then(res => res.json())
         )
       );
@@ -32,7 +32,10 @@ const Discover = ({ genre, setShowId, bookmark, setBookmark }) => {
   }, [])
   if (loading) return (<div>Loading</div>)
   return (
-    <div className='h-fit w-full flex flex-wrap py-4 bg-[#131313] md:gap-5 justify-center gap-3 px-1 md:px-2'>
+    <div className='flex flex-col gap-2 bg-[#131313] px-1 md:px-2 py-2 min-h-[100vh]'>
+      
+    <div className='font-semibold text-md md:text-lg text-amber-300 ml-2'>Searching results for {genre.name}</div>
+    <div className='h-fit w-full flex flex-wrap md:gap-5 justify-center gap-3 '>
       {movies.map((e, index) => (
 
         <div className='w-[100px] mb-2 md:w-[160px] relative group' key={index} tabIndex={0}>
@@ -55,6 +58,8 @@ const Discover = ({ genre, setShowId, bookmark, setBookmark }) => {
       ))}
 
     </div>
+    </div>
+
   )
 }
 

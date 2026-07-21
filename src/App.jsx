@@ -14,9 +14,11 @@ const App = () => {
 
   let id = JSON.parse(localStorage.getItem('id')) || '';
   let genreId = JSON.parse(localStorage.getItem('genre')) || 12;
+  let searchType = JSON.parse(localStorage.getItem('searchType'))|| 'movie';
 
   const [showId, setShowId] = useState({ id: id.id, type: id.type });
   const [genre, setGenre] = useState(genreId);
+  const[SearchType , setSearchType] = useState(searchType);
   const [bookmark, setBookmark] = useState(() => {
     const saved = JSON.parse(localStorage.getItem('bookmark'));
     return saved ? saved : [];
@@ -24,15 +26,15 @@ const App = () => {
 
   return (
     <div className='min-h-[100vh] w-full bg-black text-white pb-5 overflow-hidden'>
-      <Nav />
-      <SearchBar />
+      <Nav  SearchType={SearchType} setSearchType={setSearchType}/>
+      <SearchBar SearchType={SearchType} setSearchType={setSearchType}/>
       <Routes>
 
-        <Route path='/' element={<Home setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
+        <Route path='/' element={<Home setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark}  />}/>
         <Route path='/categories' element={<Categories setGenre={setGenre} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
         <Route path='/wishlist' element={<Wishlist setShowId={setShowId} />} />
         <Route path='/Show' element={<Show showId={showId} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
-        <Route path='/SearchPage' element={<SearchPage setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
+        <Route path='/SearchPage' element={<SearchPage setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} SearchType={SearchType}/>} />
         <Route path='/Discover' element={<Discover genre={genre} setShowId={setShowId} bookmark={bookmark} setBookmark={setBookmark} />} />
 
       </Routes>

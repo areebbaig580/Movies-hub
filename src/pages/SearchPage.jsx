@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import Bookmark from '../components/wishlist/Bookmark';
 
-const SearchPage = ({ setShowId, bookmark, setBookmark }) => {
+const SearchPage = ({ setShowId, bookmark, setBookmark , SearchType }) => {
     const [searchParams] = useSearchParams();
     const [movies, setMovies] = useState([]);
     const query = searchParams.get('q');
@@ -11,8 +11,8 @@ const SearchPage = ({ setShowId, bookmark, setBookmark }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`;
-            const genre = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${28}`
+            const URL = `https://api.themoviedb.org/3/search/${SearchType}?api_key=${API_KEY}&query=${encodeURIComponent(query)}`;
+            const genre = `https://api.themoviedb.org/3/discover/${SearchType}?api_key=${API_KEY}&with_genres=${28}`
             const genRes = await fetch(genre);
             const gendata = await genRes.json();
             // console.log(gendata);
@@ -22,8 +22,10 @@ const SearchPage = ({ setShowId, bookmark, setBookmark }) => {
             // console.log(data);
             let movieData = [];
             for (let i = 0; i < resultLen; i++) {
+                let title = '';
                 let card = {};
-                let title = data.results[i].title;
+                SearchPage === 'movie'? title = data.results[i].title: title = data.results[i].name;
+
                 let posterPath = data.results[i].poster_path;
                 if (posterPath === null || posterPath === undefined) continue;
                 let poster = `${posterUrl}${posterPath}`
@@ -38,28 +40,31 @@ const SearchPage = ({ setShowId, bookmark, setBookmark }) => {
     }, [query])
 
     return (
-        <div className='h-fit w-full flex flex-wrap py-4 bg-[#131313] md:gap-5 justify-center gap-3 px-1 md:px-2'>
-            {movies.map((e, index) => (
+        <div className='flex flex-col gap-2 bg-[#131313] px-1 md:px-2 py-2 min-h-[100vh]'>
+            <div className='font-semibold text-md md:text-lg text-amber-300 ml-2'>Searching results for {query}</div>
+            <div className='h-fit w-full flex flex-wrap md:gap-5 justify-center gap-3 '>
+                {movies.map((e, index) => (
 
-                <div className='w-[100px] mb-2 md:w-[160px] relative group' key={index} tabIndex={0}>
-                    <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={e.id} categ={'movie'}/>
-                    <img src={e.poster} alt="" className='h-[22vh] md:h-[34vh] w-full object-contain rounded-lg' />
-                    <div className='bg-[#191919] rounded-b-lg min-h-[12vh] w-full pl-2 py-2'>
-                        <div>{e.name}</div>
-                        <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
-                            to={'/Show'}
-                            onClick={() => {
-                                setShowId({ id: e.id, type: 'movie' });
-                                localStorage.setItem('id', JSON.stringify({ id: e.id, type: 'movie' }));
-                                localStorage.setItem('lastSearch', JSON.stringify({ id: e.id, name: e.name ,type: 'movie'}));
-                            }}
-                        >Show more
-                        </Link>
+                    <div className='w-[100px] md:w-[160px] relative group' key={index} tabIndex={0}>
+                        <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={e.id} categ={SearchType} />
+                        <img src={e.poster} alt="" className='h-[22vh] md:h-[34vh] w-full object-contain rounded-lg' />
+                        <div className='bg-[#191919] rounded-b-lg min-h-[12vh] w-full pl-2 py-2'>
+                            <div>{e.name}</div>
+                            <Link className=' text-amber-300 text-sm cursor-pointer mt-2'
+                                to={'/Show'}
+                                onClick={() => {
+                                    setShowId({ id: e.id, type: SearchType });
+                                    localStorage.setItem('id', JSON.stringify({ id: e.id, type: SearchType }));
+                                    localStorage.setItem('lastSearch', JSON.stringify({ id: e.id, name: e.name, type: SearchType }));
+                                }}
+                            >Show more
+                            </Link>
+                        </div>
+
                     </div>
+                ))}
 
-                </div>
-            ))}
-
+            </div>
         </div>
     )
 }
