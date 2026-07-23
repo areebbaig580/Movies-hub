@@ -171,7 +171,7 @@ const Show = ({ showId, setShowId, bookmark, setBookmark }) => {
                             <div className='text-amber-300'>Watch Providers</div>
                             <div className='flex gap-3 md:gap-6 mb-2 h-fit w-full flex-wrap'>
 
-                                {provider.length > 1 ? (
+                                {provider.length > 0 ? (
 
                                     provider.map((p, index) => (
 
