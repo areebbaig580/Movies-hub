@@ -45,10 +45,10 @@ const Wishlist = ({ setShowId }) => {
         }
         fetchData();
     }, [bookmark])
-    if (loading) return (<div>Loading</div>)
+    if (loading) return (<div className='min-h-[100vh] px-2 py-2 bg-[#131313]'>Loading</div>)
     return (
         <div className='min-h-[100vh] w-fit px-1 md:px-2 flex gap-2 flex-col'>
-            <div className='flex flex-col bg-[#131313] px-2 py-2 gap-2 min-h-[60vh] min-w-[100vw]'>
+            <div className='flex flex-col bg-[#131313] px-2 py-2 gap-2 min-w-[100vw]'>
 
                 <div className='h-fit font-semibold text-md md:text-lg text-amber-300'>Wishlist</div>
 
