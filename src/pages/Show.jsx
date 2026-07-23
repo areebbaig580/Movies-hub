@@ -2,7 +2,7 @@ import { Clock, Star } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import Popular from '../components/home/Popular';
 
-const Show = ({ showId, setShowId ,  bookmark ,setBookmark }) => {
+const Show = ({ showId, setShowId, bookmark, setBookmark }) => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
     const [movieData, SetMovieData] = useState([]);
     const posterUrl = 'https://image.tmdb.org/t/p/original';
@@ -36,8 +36,23 @@ const Show = ({ showId, setShowId ,  bookmark ,setBookmark }) => {
             const CastFetch = await fetch(Cast);
             const CastData = await CastFetch.json();
             const providers = await fetch(watchProviders);
-            const providersData = await providers.json();
+            const providersJson = await providers.json();
 
+            let providerData = providersJson.results.IN;
+            let providerlink = [];
+
+            if (providerData) {
+
+                if ('rent' in providerData) {
+
+                    providerlink.push(...providerData.rent);
+                }
+
+                if ('flatrate' in providerData) {
+                    providerlink.push(...providerData.flatrate);
+
+                }
+            }
             //Movie info collection
 
             let genreNAme = [];
@@ -93,11 +108,12 @@ const Show = ({ showId, setShowId ,  bookmark ,setBookmark }) => {
             SetMovieData(posterData);
             setLoading(false);
             setCastInfo(castI);
+            setProvider(providerlink);
         }
         fetchMOvie();
     }, [showId])
 
-    if (loading) return (<div>Loading</div>)
+    if (loading) return (<div className='min-h-[100vh] px-2 py-2 bg-[#131313]'>Loading...</div>)
     else
         return (
             <div className='px-2 flex flex-col gap-2'>
@@ -108,7 +124,7 @@ const Show = ({ showId, setShowId ,  bookmark ,setBookmark }) => {
                         <div className='text-3xl md:text-5xl font-semibold mb-2'>{movieData[0].name}</div>
                         <div className='text-white/60'>{movieData[0].tagline}</div>
 
-                        <div className='flex gap-2 mb-2'>
+                        <div className='flex gap-2 mb-2 h-fit w-fit flex-wrap'>
                             {movieData[0].genre.map((g, index) => (
                                 <span key={index} className='px-2 py-1 bg-white/10 rounded-full text-xs md:text-sm'>
                                     {g}
@@ -148,6 +164,28 @@ const Show = ({ showId, setShowId ,  bookmark ,setBookmark }) => {
                                 ))}
                             </div>
                         </div>
+                        <div className=' flex gap-2 flex-col'>
+
+                            <div className='text-amber-300'>Watch Providers</div>
+                            <div className='flex gap-5 mb-2 h-fit w-fit'>
+
+                                {provider.length > 1 ? (
+
+                                    provider.map((p, index) => (
+
+                                        <div className='flex flex-col gap-2' key={index}>
+                                            <img src={`${posterUrl}${p.logo_path}`} alt="" className='w-[8vh] object-contain ' />
+                                            <div className='h-fit w-[10vh] text-xs md:text-sm text-white/70 '>{p.provider_name}</div>
+                                        </div>
+
+                                    ))
+                                ) : (
+                                    <div className='text-white/70 h-fit w-fit px-2 bg-white/7 py-1 rounded-lg'>No Providers Available</div>
+                                )
+                                }
+                            </div>
+
+                        </div>
                     </div>
                 </div>
                 <div className='h-fit w-full bg-[#0c0c0c] px-4'>
@@ -170,7 +208,7 @@ const Show = ({ showId, setShowId ,  bookmark ,setBookmark }) => {
                 </div>
                 <div className='h-fit w-full bg-[#0c0c0c] px-4'>
 
-                    <Popular url={`https://api.themoviedb.org/3/${showId.type}/${showId.id}/recommendations?api_key=`} label={`More like this`} setShowId={setShowId} query={''} categ={showId.type}  bookmark={bookmark} setBookmark={setBookmark}/>
+                    <Popular url={`https://api.themoviedb.org/3/${showId.type}/${showId.id}/recommendations?api_key=`} label={`More like this`} setShowId={setShowId} query={''} categ={showId.type} bookmark={bookmark} setBookmark={setBookmark} />
                 </div>
 
 
