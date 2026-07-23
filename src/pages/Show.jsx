@@ -167,14 +167,14 @@ const Show = ({ showId, setShowId, bookmark, setBookmark }) => {
                         <div className=' flex gap-2 flex-col'>
 
                             <div className='text-amber-300'>Watch Providers</div>
-                            <div className='flex gap-5 mb-2 h-fit w-fit'>
+                            <div className='flex gap-3 mb-2 h-fit w-fit flex-wrap'>
 
                                 {provider.length > 1 ? (
 
                                     provider.map((p, index) => (
 
                                         <div className='flex flex-col gap-2' key={index}>
-                                            <img src={`${posterUrl}${p.logo_path}`} alt="" className='w-[8vh] object-contain ' />
+                                            <img src={`${posterUrl}${p.logo_path}`} alt="" className='w-[6vh] md:w-[8vh] object-contain ' />
                                             <div className='h-fit w-[10vh] text-xs md:text-sm text-white/70 '>{p.provider_name}</div>
                                         </div>
 
