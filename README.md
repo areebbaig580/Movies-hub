@@ -3,7 +3,7 @@
 MovieHub is a modern movie and TV discovery application built with **React**, **Tailwind CSS**, and the **TMDB API**. Users can discover trending content, search movies and TV shows, explore genres, save favorites, and view detailed information including cast, streaming providers, recommendations, and more.
 
 
-## Live Demo
+## Live Link
 
 https://movies-hub-vert-xi.vercel.app/
 
