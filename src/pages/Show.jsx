@@ -1,6 +1,7 @@
 import { Clock, Star } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import Popular from '../components/home/Popular';
+import Bookmark from '../components/wishlist/Bookmark';
 
 const Show = ({ showId, setShowId, bookmark, setBookmark }) => {
     const API_KEY = "a3cc59d361435c6d960d428362f80a62";
@@ -117,7 +118,8 @@ const Show = ({ showId, setShowId, bookmark, setBookmark }) => {
     else
         return (
             <div className='px-2 flex flex-col gap-2'>
-                <div className='h-fit w-full flex pb-5 bg-[#0c0c0c] rounded-lg overflow-hidden pt-4'>
+                <div className='h-fit w-full flex pb-5 bg-[#0c0c0c] rounded-lg overflow-hidden pt-4 group relative'>
+                    <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={showId.id} categ={showId.type} />
 
                     <img src={movieData[0].back} alt="" className='h-[50vh] object-contain hidden md:block' />
                     <div className='flex flex-col gap-2 h-full w-full md:w-[80vw]  px-4'>
@@ -167,7 +169,7 @@ const Show = ({ showId, setShowId, bookmark, setBookmark }) => {
                         <div className=' flex gap-2 flex-col'>
 
                             <div className='text-amber-300'>Watch Providers</div>
-                            <div className='flex gap-3 mb-2 h-fit w-fit flex-wrap'>
+                            <div className='flex gap-3 md:gap-6 mb-2 h-fit w-full flex-wrap'>
 
                                 {provider.length > 1 ? (
 
@@ -175,7 +177,7 @@ const Show = ({ showId, setShowId, bookmark, setBookmark }) => {
 
                                         <div className='flex flex-col gap-2' key={index}>
                                             <img src={`${posterUrl}${p.logo_path}`} alt="" className='w-[6vh] md:w-[8vh] object-contain ' />
-                                            <div className='h-fit w-[10vh] text-xs md:text-sm text-white/70 '>{p.provider_name}</div>
+                                            <div className='h-fit w-[8vh] text-xs md:text-sm text-white/70 '>{p.provider_name}</div>
                                         </div>
 
                                     ))
