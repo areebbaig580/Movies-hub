@@ -118,7 +118,7 @@ const Show = ({ showId, setShowId, bookmark, setBookmark }) => {
     else
         return (
             <div className='px-2 flex flex-col gap-2'>
-                <div className='h-fit w-full flex pb-5 bg-[#0c0c0c] rounded-lg overflow-hidden pt-4 group relative'>
+                <div className='h-fit w-full flex pb-5 bg-[#0c0c0c] rounded-lg overflow-hidden pt-4 group relative' tabIndex={0}>
                     <Bookmark bookmark={bookmark} setBookmark={setBookmark} id={showId.id} categ={showId.type} />
 
                     <img src={movieData[0].back} alt="" className='h-[50vh] object-contain hidden md:block' />
